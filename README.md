@@ -34,16 +34,18 @@
 ## Ce qui a été fait :
 
 composer require-api
+
 Modification dans api_platform.yaml
-composer require symfony/maker-bundle --dev
-php bin/console make:entity (Contact)
-composer require migrations
-php bin/console doctrine:database:create
-php bin/console make:migration
-php bin/console php bin/console doctrine:migrations:migrate
+
+composer require symfony/maker-bundle --dev  
+php bin/console make:entity (Contact)  
+composer require migrations  
+php bin/console doctrine:database:create  
+php bin/console make:migration  
+php bin/console php bin/console doctrine:migrations:migrate  
 composer require symfony/validator doctrine/annotations
 
-Essai d'ajout (réussi)
+Essai d'ajout (réussi)  
 Problème rencontré : 
 ```
 {
@@ -73,17 +75,17 @@ Seule la partie avec
   ```
   est envoyée en base de données, et est dupliquée avec la versions avec majuscule (raison pas encore trouvée)
 
-  Création (réussie)
-  Lecture (réussie)
-  Suprression (réussie)
-  Update (réussie)
+  Création (réussie)  
+  Lecture (réussie)  
+  Suprression (réussie)  
+  Update (réussie)  
 
 ## La DB contient donc :
-   Nom (string de 50 caractères maximum)
-   Prénom (string de 50 caractères maximum)
-   Email (string de 50 caractères maximum, avec vérification que ce soit bien une adresse mail entrée, du moins contient un @)
-   Adresse (string de 255 caractères maximum)
-   Téléphone (string de 15 caractères maximum)
+   Nom (string de 50 caractères maximum)  
+   Prénom (string de 50 caractères maximum)  
+   Email (string de 50 caractères maximum, avec vérification que ce soit bien une adresse mail entrée, du moins contient un @)  
+   Adresse (string de 255 caractères maximum)  
+   Téléphone (string de 15 caractères maximum)  
    Age (integer de 3 chiffres maximum)
 
 pour les contacts.
@@ -97,6 +99,6 @@ La base de données peut-être utilisée avec MAMP/WAMP/LAMP (ou alors régler l
 Avec la ligne de commande, aller dans le dossier cloné "test-technique-iad" entrer `composer install` puis `symfony serve`, puis `php bin/console doctrine:database:create` ensuite `php bin/console make:migration` puis `php bin/console php bin/console doctrine:migrations:migrate` , enfin aller sur `https://127.0.0.1:8000/api` 
 
 ## Horaires passé sur l'exercice :
-14h-15h (absence de 10 minutes)
-15h10-15h56 (recharge du PC jusqu'à 17h08)
+14h-15h (absence de 10 minutes)  
+15h10-15h56 (recharge du PC jusqu'à 17h08)  
 17h08-18h04
