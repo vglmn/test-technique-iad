@@ -29,4 +29,6 @@
 
 13. La documentation est un plus
 
-14. Le SQL est aussi important que le PHP```
+14. Le SQL est aussi important que le PHP
+```
+
