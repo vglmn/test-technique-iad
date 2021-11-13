@@ -31,4 +31,72 @@
 
 14. Le SQL est aussi important que le PHP
 ```
+## Ce qui a été fait :
 
+composer require-api
+Modification dans api_platform.yaml
+composer require symfony/maker-bundle --dev
+php bin/console make:entity (Contact)
+composer require migrations
+php bin/console doctrine:database:create
+php bin/console make:migration
+php bin/console php bin/console doctrine:migrations:migrate
+composer require symfony/validator doctrine/annotations
+
+Essai d'ajout (réussi)
+Problème rencontré : 
+```
+{
+  "Nom": "string",
+  "Prenom": "string",
+  "Email": "user",
+  "Adresse": "string",
+  "Telephone": "string",
+  "Age": 0,
+  "nom": "string",
+  "prenom": "string",
+  "email": "user2@example.com",
+  "adresse": "string",
+  "telephone": "string",
+  "age": 0
+} 
+```
+
+Seule la partie avec 
+``` 
+"nom": "string",
+  "prenom": "string",
+  "email": "user2@example.com",
+  "adresse": "string",
+  "telephone": "string",
+  "age": 0
+  ```
+  est envoyée en base de données, et est dupliquée avec la versions avec majuscule (raison pas encore trouvée)
+
+  Création (réussie)
+  Lecture (réussie)
+  Suprression (réussie)
+  Update (réussie)
+
+## La DB contient donc :
+   Nom (string de 50 caractères maximum)
+   Prénom (string de 50 caractères maximum)
+   Email (string de 50 caractères maximum, avec vérification que ce soit bien une adresse mail entrée, du moins contient un @)
+   Adresse (string de 255 caractères maximum)
+   Téléphone (string de 15 caractères maximum)
+   Age (integer de 3 chiffres maximum)
+
+pour les contacts.
+
+Testé avec postman (donne le résultat)
+
+# Installation 
+
+La base de données peut-être utilisée avec MAMP/WAMP/LAMP (ou alors régler le fichier .env avec les informtions de la DB existantes)
+
+Avec la ligne de commande, aller dans le dossier cloné "test-technique-iad" entrer `composer install` puis `symfony serve`, puis `php bin/console doctrine:database:create` ensuite `php bin/console make:migration` puis `php bin/console php bin/console doctrine:migrations:migrate` , enfin aller sur `https://127.0.0.1:8000/api` 
+
+## Horaires passé sur l'exercice :
+14h-15h (absence de 10 minutes)
+15h10-15h56 (recharge du PC jusqu'à 17h08)
+17h08-
