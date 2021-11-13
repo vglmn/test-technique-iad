@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ContactRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource()
@@ -20,17 +21,20 @@ class Contact
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=50)
      */
     private $Name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=50)
      */
     private $FirstName;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=50)
+     * @Assert\Email(
+     *    message = " '{{ value }}' n'est pas une adresse mail valide."
+     * )
      */
     private $Email;
 
@@ -40,12 +44,17 @@ class Contact
     private $Address;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
+     * @Assert\Length(min = 8, max = 20, minMessage = "min_lenght", maxMessage = "max_lenght")
+     * @Assert\Regex(pattern="/^\(0\)[0-9]*$", message="Mettre votre numéro de téléphone chifre par chiffre")
      */
     private $Phone;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Positive (
+     *  message = " L'âge entré n'est pas valide."
+     * )
      */
     private $Age;
 
